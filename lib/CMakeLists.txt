@@ -108,6 +108,7 @@ set_target_properties(libmosquitto PROPERTIES
 	SOVERSION 1
 )
 
+target_include_directories(libmosquitto PUBLIC mosquitto.h)
 install(TARGETS libmosquitto RUNTIME DESTINATION "${BINDIR}" LIBRARY DESTINATION "${LIBDIR}")
 
 if (${WITH_STATIC_LIBRARIES} STREQUAL ON)
@@ -125,6 +126,7 @@ if (${WITH_STATIC_LIBRARIES} STREQUAL ON)
 		VERSION ${VERSION}
 	)
 
+	target_include_directories(libmosquitto PUBLIC mosquitto.h)
 	target_compile_definitions(libmosquitto_static PUBLIC "LIBMOSQUITTO_STATIC")
 	install(TARGETS libmosquitto_static RUNTIME DESTINATION "${BINDIR}" ARCHIVE DESTINATION "${LIBDIR}")
 endif (${WITH_STATIC_LIBRARIES} STREQUAL ON)
