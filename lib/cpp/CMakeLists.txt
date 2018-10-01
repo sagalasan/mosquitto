@@ -13,7 +13,7 @@ set_target_properties(mosquittopp PROPERTIES
 	VERSION ${VERSION}
 	SOVERSION 1
 )
-target_include_directories(mosquittopp PUBLIC mosquittopp.h)
+target_include_directories(mosquittopp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 install(TARGETS mosquittopp RUNTIME DESTINATION "${BINDIR}" LIBRARY DESTINATION "${LIBDIR}")
 
 if (${WITH_STATIC_LIBRARIES} STREQUAL ON)
@@ -34,7 +34,7 @@ if (${WITH_STATIC_LIBRARIES} STREQUAL ON)
 		VERSION ${VERSION}
 	)
 
-		target_include_directories(mosquittopp_static PUBLIC mosquittopp.h)
+		target_include_directories(mosquittopp_static PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 	target_compile_definitions(mosquittopp_static PUBLIC "LIBMOSQUITTO_STATIC")
 	install(TARGETS mosquittopp_static RUNTIME DESTINATION "${BINDIR}" ARCHIVE DESTINATION "${LIBDIR}")
 endif (${WITH_STATIC_LIBRARIES} STREQUAL ON)
